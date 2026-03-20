@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-SmartrestaurantApplication<smartrestaurant-backend>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "nhomlamdoan.smartrestaurant.SmartrestaurantApplication",
+            "projectName": "smartrestaurant-backend",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
