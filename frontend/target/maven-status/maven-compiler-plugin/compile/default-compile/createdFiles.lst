@@ -1,0 +1,8 @@
+com\nhomdoan\AuthService$LoginResult.class
+com\nhomdoan\AuthService$RegisterResult.class
+com\nhomdoan\AuthService.class
+com\nhomdoan\UserSession.class
+com\nhomdoan\DashboardController.class
+com\nhomdoan\App.class
+com\nhomdoan\RegisterController.class
+com\nhomdoan\LoginController.class
