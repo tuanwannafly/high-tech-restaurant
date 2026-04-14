@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns:fx="http://javafx.openjfx.com/javafx/fxml"
+            fx:controller="com.nhomdoan.DashboardController"
+            styleClass="dash-root">
+
+    <!-- ═══ TOP NAVBAR ═══ -->
+    <top>
+        <HBox styleClass="navbar">
+            <Label styleClass="navbar-brand" text="🍽  Smart Restaurant"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <VBox styleClass="navbar-user">
+                <Label fx:id="welcomeLabel" styleClass="navbar-name" text="Xin chào!"/>
+                <Label fx:id="emailLabel"   styleClass="navbar-email" text=""/>
+            </VBox>
+            <VBox styleClass="navbar-role-box">
+                <Label fx:id="roleLabel" styleClass="navbar-role" text=""/>
+            </VBox>
+            <Button styleClass="logout-btn" text="⏻  Đăng xuất" onAction="#handleLogout"/>
+        </HBox>
+    </top>
+
+    <!-- ═══ CENTER CONTENT ═══ -->
+    <center>
+        <VBox styleClass="dash-content">
+
+            <!-- Stats row -->
+            <HBox styleClass="stats-row" spacing="16">
+                <VBox styleClass="stat-card stat-orange" HBox.hgrow="ALWAYS">
+                    <Label styleClass="stat-icon" text="🪑"/>
+                    <Label styleClass="stat-value" text="12"/>
+                    <Label styleClass="stat-label" text="Bàn đang phục vụ"/>
+                </VBox>
+                <VBox styleClass="stat-card stat-green" HBox.hgrow="ALWAYS">
+                    <Label styleClass="stat-icon" text="📋"/>
+                    <Label styleClass="stat-value" text="8"/>
+                    <Label styleClass="stat-label" text="Đơn hàng hôm nay"/>
+                </VBox>
+                <VBox styleClass="stat-card stat-blue" HBox.hgrow="ALWAYS">
+                    <Label styleClass="stat-icon" text="💰"/>
+                    <Label styleClass="stat-value" text="2.4M"/>
+                    <Label styleClass="stat-label" text="Doanh thu hôm nay"/>
+                </VBox>
+                <VBox styleClass="stat-card stat-red" HBox.hgrow="ALWAYS">
+                    <Label styleClass="stat-icon" text="👥"/>
+                    <Label styleClass="stat-value" text="5"/>
+                    <Label styleClass="stat-label" text="Nhân viên ca này"/>
+                </VBox>
+            </HBox>
+
+            <!-- Module grid -->
+            <Label styleClass="section-title" text="Chức năng chính"/>
+            <GridPane styleClass="module-grid" hgap="16" vgap="16">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="ALWAYS" percentWidth="33.33"/>
+                    <ColumnConstraints hgrow="ALWAYS" percentWidth="33.33"/>
+                    <ColumnConstraints hgrow="ALWAYS" percentWidth="33.33"/>
+                </columnConstraints>
+
+                <Button GridPane.columnIndex="0" GridPane.rowIndex="0"
+                        styleClass="module-btn mod-orange"
+                        maxWidth="Infinity" onAction="#handleQuanLyBan">
+                    <graphic>
+                        <VBox styleClass="mod-inner">
+                            <Label styleClass="mod-icon" text="🪑"/>
+                            <Label styleClass="mod-title" text="Quản lý bàn"/>
+                            <Label styleClass="mod-desc" text="Xem trạng thái và sắp xếp bàn"/>
+                        </VBox>
+                    </graphic>
+                </Button>
+
+                <Button GridPane.columnIndex="1" GridPane.rowIndex="0"
+                        styleClass="module-btn mod-green"
+                        maxWidth="Infinity" onAction="#handleQuanLyMon">
+                    <graphic>
+                        <VBox styleClass="mod-inner">
+                            <Label styleClass="mod-icon" text="🍜"/>
+                            <Label styleClass="mod-title" text="Quản lý món ăn"/>
+                            <Label styleClass="mod-desc" text="Thêm, sửa, xoá thực đơn"/>
+                        </VBox>
+                    </graphic>
+                </Button>
+
+                <Button GridPane.columnIndex="2" GridPane.rowIndex="0"
+                        styleClass="module-btn mod-blue"
+                        maxWidth="Infinity" onAction="#handleQuanLyOrder">
+                    <graphic>
+                        <VBox styleClass="mod-inner">
+                            <Label styleClass="mod-icon" text="📋"/>
+                            <Label styleClass="mod-title" text="Quản lý đơn hàng"/>
+                            <Label styleClass="mod-desc" text="Tiếp nhận và xử lý đơn"/>
+                        </VBox>
+                    </graphic>
+                </Button>
+
+                <Button GridPane.columnIndex="0" GridPane.rowIndex="1"
+                        styleClass="module-btn mod-purple"
+                        maxWidth="Infinity" onAction="#handleThongKe">
+                    <graphic>
+                        <VBox styleClass="mod-inner">
+                            <Label styleClass="mod-icon" text="📊"/>
+                            <Label styleClass="mod-title" text="Thống kê"/>
+                            <Label styleClass="mod-desc" text="Doanh thu và báo cáo"/>
+                        </VBox>
+                    </graphic>
+                </Button>
+
+                <Button GridPane.columnIndex="1" GridPane.rowIndex="1"
+                        styleClass="module-btn mod-teal"
+                        maxWidth="Infinity" onAction="#handleQuanLyNhanVien">
+                    <graphic>
+                        <VBox styleClass="mod-inner">
+                            <Label styleClass="mod-icon" text="👥"/>
+                            <Label styleClass="mod-title" text="Nhân viên"/>
+                            <Label styleClass="mod-desc" text="Quản lý ca và nhân sự"/>
+                        </VBox>
+                    </graphic>
+                </Button>
+
+                <Button GridPane.columnIndex="2" GridPane.rowIndex="1"
+                        styleClass="module-btn mod-gray"
+                        maxWidth="Infinity" onAction="#handleCaiDat">
+                    <graphic>
+                        <VBox styleClass="mod-inner">
+                            <Label styleClass="mod-icon" text="⚙"/>
+                            <Label styleClass="mod-title" text="Cài đặt"/>
+                            <Label styleClass="mod-desc" text="Cấu hình hệ thống"/>
+                        </VBox>
+                    </graphic>
+                </Button>
+            </GridPane>
+
+        </VBox>
+    </center>
+
+</BorderPane>
