@@ -1,6 +1,7 @@
 package nhomlamdoan.smartrestaurant.domain;
+import java.time.LocalDateTime;
 
-import java.time.Instant;
+
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -38,8 +39,8 @@ public class Role {
     private String description;
     private boolean active;
 
-    private Instant createdAt;
-    private Instant updatedAt;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
     private String createdBy;
     private String updatedBy;
 
@@ -58,12 +59,11 @@ public class Role {
 
     @PrePersist
     protected void onCreate() {
-        this.createdAt = Instant.now();
+        this.createdAt = LocalDateTime.now();
     }
 
     @PreUpdate
     protected void onUpdate() {
-        this.updatedAt = Instant.now();
+        this.updatedAt = LocalDateTime.now();
     }
 }
-

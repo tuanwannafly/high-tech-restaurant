@@ -1,6 +1,7 @@
 package nhomlamdoan.smartrestaurant.domain.response.user;
+import java.time.LocalDateTime;
 
-import java.time.Instant;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,5 +21,5 @@ public class ResUpdateUserDTO {
     private GenderEnum gender;
     private String address;
     private int age;
-    private Instant updatedAt;
+    private LocalDateTime updatedAt;
 }

@@ -1,6 +1,6 @@
 package nhomlamdoan.smartrestaurant.domain.response.user;
 
-import java.time.Instant;
+
 import java.time.LocalDateTime;
 
 import lombok.AllArgsConstructor;
@@ -20,6 +20,6 @@ public class ResCreateUserDTO {
     private GenderEnum gender;
     private String address;
     private int age;
-    private Instant createdAt;
-    private Instant updatedAt;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 }
