@@ -30,6 +30,7 @@ dependencies {
 	implementation("org.thymeleaf.extras:thymeleaf-extras-springsecurity6")
 	implementation ("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation ("com.oracle.database.jdbc:ojdbc11:23.3.0.23.09")
+	implementation("com.turkraft.springfilter:jpa:3.1.7")
 	runtimeOnly("com.oracle.database.jdbc:ojdbc11")
 	testImplementation("org.springframework.boot:spring-boot-starter-actuator-test")
 	testImplementation("org.springframework.boot:spring-boot-starter-data-jpa-test")

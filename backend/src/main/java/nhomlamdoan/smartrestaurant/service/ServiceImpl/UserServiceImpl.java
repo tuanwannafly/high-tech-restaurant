@@ -121,5 +121,14 @@ public class UserServiceImpl implements UserService {
         res.setAddress(user.getAddress());
         return res;
     }
+
+    @Override
+    public void updateUserToken(String token, String email) {
+        User currentUser = this.handleGetUserByUsername(email);
+        if (currentUser != null) {
+            currentUser.setRefreshToken(token);
+            this.userRepository.save(currentUser);
+        }
+    }
     
 }
