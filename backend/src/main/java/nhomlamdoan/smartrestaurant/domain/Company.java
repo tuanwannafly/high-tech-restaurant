@@ -1,6 +1,6 @@
 package nhomlamdoan.smartrestaurant.domain;
 
-import java.time.Instant;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,11 +39,11 @@ public class Company {
     @Column(name = "status")
     private CompanyStatus status;
 
-    @Column(name = "created_at", nullable = false, updatable = false)
-    private Instant createdAt;
+    @Column(name = "created_at", nullable = false, updatable = false, columnDefinition = "TIMESTAMP")
+    private LocalDateTime createdAt;
 
-    @Column(name = "updated_at")
-    private Instant updatedAt;
+    @Column(name = "updated_at", columnDefinition = "TIMESTAMP")
+    private LocalDateTime updatedAt;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
@@ -58,11 +58,11 @@ public class Company {
 
     @PrePersist
     protected void onCreate() {
-        this.createdAt = Instant.now();
+        this.createdAt = LocalDateTime.now();
     }
 
     @PreUpdate
     protected void onUpdate() {
-        this.updatedAt = Instant.now();
+        this.updatedAt = LocalDateTime.now();
     }
 }
