@@ -1,0 +1,6 @@
+models:
+  - name: Claude Sonnet Proxy (Default)
+    provider: anthropic
+    model: claude-sonnet-4-6
+    apiKey: "sk-ant-api03-IWBfpfqWIP7hDXO2FK7vdwg5UIuCyoHdlFkoK4peHzWD3urxLiMIbyG4aS866M04OLHjh7z8oPtctuzB9NJlmg"
+    apiBase: "https://1gw.gwai.cloud"

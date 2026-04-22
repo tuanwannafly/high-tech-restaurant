@@ -12,11 +12,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 import jakarta.validation.Valid;
+import nhomlamdoan.smartrestaurant.domain.Restaurant;
+import nhomlamdoan.smartrestaurant.domain.Role;
 import nhomlamdoan.smartrestaurant.domain.User;
 import nhomlamdoan.smartrestaurant.domain.response.user.ResCreateUserDTO;
 import nhomlamdoan.smartrestaurant.domain.response.user.ResUpdateUserDTO;
 import nhomlamdoan.smartrestaurant.domain.response.user.ResUserDTO;
+import nhomlamdoan.smartrestaurant.service.RestaurantService;
 import nhomlamdoan.smartrestaurant.service.UserService;
 import nhomlamdoan.smartrestaurant.util.error.IdInvalidException;
 
@@ -25,29 +30,44 @@ import nhomlamdoan.smartrestaurant.util.error.IdInvalidException;
 public class UserController {
     private final UserService userService;
     private final PasswordEncoder passwordEncoder;
+    private final RestaurantService restaurantService;
 
-    public UserController(UserService userService, PasswordEncoder passwordEncoder ) {
+    public UserController(UserService userService, PasswordEncoder passwordEncoder,
+            RestaurantService restaurantService) {
         this.passwordEncoder = passwordEncoder;
         this.userService = userService;
+        this.restaurantService = restaurantService;
+    }
+
+    @GetMapping("/users")
+    public ResponseEntity<List<ResUserDTO>> getAllUsers() {
+        List<ResUserDTO> users = this.userService.findAllUsersByCurrentUserScope()
+                .stream()
+                .map(this.userService::convertToResUserDTO)
+                .collect(java.util.stream.Collectors.toList());
+        return ResponseEntity.ok(users);
     }
 
     @PostMapping("/users")
-    //@ApiMessage("Create a new user")
     public ResponseEntity<ResCreateUserDTO> createUser(@Valid @RequestBody User user) {
-        // if (this.userService.isEmailExist(user.getEmail())) {
-        //     throw new IdInvalidException(
-        //             "Email " + user.getEmail() + " đã tồn tại, vui lòng sử dụng email khác.");
-        // }
-        // user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        // Resolve Role từ DB theo name
+        if (user.getRole() != null && user.getRole().getName() != null) {
+            Role role = this.userService.findRoleByName(user.getRole().getName());
+            user.setRole(role);
+        }
+        // Resolve Restaurant từ DB theo restaurantId
+        if (user.getRestaurant() != null && user.getRestaurant().getRestaurantId() != null) {
+            Restaurant restaurant = this.restaurantService.fetchRestaurantById(
+                user.getRestaurant().getRestaurantId());
+            user.setRestaurant(restaurant);
+        }
         User newUser = this.userService.handleCreateUser(user);
-
         return ResponseEntity.status(HttpStatus.CREATED)
             .body(this.userService.convertToResCreateUserDTO(newUser));
     }
 
     @GetMapping("/users/{id}")
-    //@ApiMessage("Fetch user by id")
     public ResponseEntity<ResUserDTO> getUser(@PathVariable("id") Long id)
             throws IdInvalidException {
         User user = this.userService.fetchUserById(id);
@@ -58,7 +78,6 @@ public class UserController {
     }
 
     @DeleteMapping("/users/{id}")
-    //@ApiMessage("Delete a user")
     public ResponseEntity<Void> deleteUser(@PathVariable("id") Long id)
             throws IdInvalidException {
         User fetchUser = this.userService.fetchUserById(id);
@@ -70,17 +89,8 @@ public class UserController {
     }
 
     @PutMapping("/users")
-    //@ApiMessage("Update a user")
     public ResponseEntity<ResUpdateUserDTO> updateUser(@Valid @RequestBody User user) {
         User updated = this.userService.handleUpdateUser(user);
         return ResponseEntity.ok(this.userService.convertToResUpdateUserDTO(updated));
     }
-
-    
-
-
-    
-
-
-    
 }

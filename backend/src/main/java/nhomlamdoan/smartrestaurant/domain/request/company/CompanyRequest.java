@@ -20,6 +20,10 @@ public class CompanyRequest {
     @Email(message = "Email không hợp lệ")
     private String email;
 
+    private String logo;
+
+    private String description;
+
     @NotNull(message = "User ID không được để trống")
-    private Long userId; // Chỉ truyền ID của User ở đây
+    private Long userId;
 }

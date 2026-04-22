@@ -12,8 +12,10 @@ public class ResCompany {
     private String address;
     private String phone;
     private String email;
+    private String logo;
+    private String description;
     private CompanyStatus status;
-    private UserResponse user; // Chỉ lấy thông tin cơ bản của User
+    private UserResponse user;
 
     @Getter
     @Setter

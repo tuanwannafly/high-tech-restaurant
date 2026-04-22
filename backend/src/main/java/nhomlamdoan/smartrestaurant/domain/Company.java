@@ -23,6 +23,17 @@ public class Company {
     @Column(name = "company_id")
     private Long companyId;
 
+    // Alias getter for backward-compatibility with code that calls getId()
+    public Long getId() {
+        return this.companyId;
+    }
+
+    @Column(name = "logo", length = 500)
+    private String logo;
+
+    @Column(name = "description", columnDefinition = "CLOB")
+    private String description;
+
     @Column(name = "name", nullable = false, length = 255)
     private String name;
 

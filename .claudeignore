@@ -1,0 +1,18 @@
+# Chặn tất cả mọi thứ mặc định
+/*
+
+# Mở khóa (Cho phép) chỉ thư mục src của frontend và backend
+!frontend/
+!frontend/src/**
+!backend/
+!backend/src/**
+
+# Chặn các file nặng/file rác nằm bên trong frontend và backend
+**/node_modules/**
+**/target/**
+**/build/**
+**/.gradle/**
+**/*.zip
+**/*.jar
+**/*.bat
+**/*.sh
