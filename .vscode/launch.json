@@ -2,13 +2,28 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "com.restaurant.Main",
+            "projectName": "RestaurantManagement"
+        },
+        {
+            "type": "java",
+            "name": "App",
+            "request": "launch",
+            "mainClass": "com.nhomdoan.App",
+            "projectName": ""
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-SmartrestaurantApplication<smartrestaurant-backend>",
             "request": "launch",
             "cwd": "${workspaceFolder}",
             "mainClass": "nhomlamdoan.smartrestaurant.SmartrestaurantApplication",
             "projectName": "smartrestaurant-backend",
             "args": "",
-            "envFile": "${workspaceFolder}/.env"
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=51153 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=smartrestaurant-backend"
         }
     ]
 }
