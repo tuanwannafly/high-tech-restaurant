@@ -1,53 +1,16 @@
-# Restaurant Management System - Java Swing
+# React + Vite
 
-## Yêu cầu
-- Java 11 trở lên (https://www.java.com/download)
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Chạy ứng dụng
+Currently, two official plugins are available:
 
-### Windows
-Nhấp đúp vào `run.bat` hoặc chạy:
-```
-java -jar RestaurantManagement.jar
-```
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-### Linux / macOS
-```
-chmod +x run.sh
-./run.sh
-```
+## React Compiler
 
-## Tính năng
-- **Home**: Tổng quan doanh thu, đơn hàng, bàn đang phục vụ
-- **Quản lý Menu**: Thêm/Xóa/Cập nhật/Xem chi tiết món ăn, tìm kiếm & lọc, thống kê
-- **Quản lý Bàn**: Thêm/Xóa/Cập nhật bàn, lọc theo sức chứa & trạng thái
-- **Quản lý Nhân viên**: Thêm/Xóa/Cập nhật/Xem chi tiết nhân viên, lọc theo vai trò
-- **Quản lý Đơn hàng**: Xem đơn hàng, cập nhật trạng thái, xem chi tiết & thống kê
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Cấu trúc dự án
-```
-src/main/java/com/restaurant/
-├── Main.java                    # Entry point
-├── data/DataManager.java        # Quản lý dữ liệu
-├── model/                       # Data models
-│   ├── MenuItem.java
-│   ├── TableItem.java
-│   ├── Employee.java
-│   └── Order.java
-└── ui/                          # Giao diện
-    ├── MainFrame.java           # Cửa sổ chính + navigation
-    ├── HomePanel.java           # Màn hình tổng quan
-    ├── MenuPanel.java           # Quản lý menu
-    ├── TablePanel.java          # Quản lý bàn
-    ├── EmployeePanel.java       # Quản lý nhân viên
-    ├── OrderPanel.java          # Quản lý đơn hàng
-    └── dialog/                  # Các hộp thoại
-        ├── MenuDialog.java
-        ├── MenuDetailDialog.java
-        ├── MenuStatDialog.java
-        ├── TableDialog.java
-        ├── EmployeeDialog.java
-        ├── EmployeeDetailDialog.java
-        ├── OrderDetailDialog.java
-        └── OrderStatDialog.java
-```
+## Expanding the ESLint configuration
+
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
